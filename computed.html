@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 간단한 연산일 경우 o -->
+       <!-- {{number + 1}}  -->
+
+       <!-- 너무 많은 연산을 템플릿 안에서 하면 코드가 비대해지고 유지보수가 어렵다 -->
+       <!-- {{ message.split('').reverse().join('') }} -->
+       <button @click="changeMessage">Click</button>
+        {{reversedMessage()}} <!-- computed-->
+        {{reversedMessage()}} <!-- method-->
+        {{reversedMessage()}}
+    </div>
+    <script>
+        new Vue({ 
+            el: '#app',
+            data:{
+                message: '헬로우'
+            },
+            // methods 호출될떄마다 함수를 실행한다.
+            methods:{
+                reversedMessage(){
+                    return this.message.split('').reverse().join('') 
+                },
+                changeMessage(){
+                    this.message="연주코더";
+                }
+            },
+            // computed 는 처음에 계산하고 저장된값을 사용! 변경되지 않는 한 여러번 요청해도 있던결과를 반환!
+            computed: {
+                reversedMessage(){
+                    return this.message.split('').reverse().join('') 
+                }
+            }
+        })
+    </script>
+</body>
+</html>
