@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <style>
+        .red {
+            color : red;
+        }
+        .bold {
+            font-weight:bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 하나이상 엘리먼트 트랜지션 할 경우 template로 감싸준다. => 최종 렌더링 결과에는 <template> 엘리먼트가 포함되지 않는다. -->
+        <!-- v-if 조건문 값이 true 일 경우 렌더링 o , false일 경우 렌더링 x -->
+        <!-- <template  v-if="show">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+         -->
+        <!-- <template  v-if="number === 1">
+            <div>넘버가 1</div>
+            <div>이면</div>
+            <div>보이기</div>
+        </template>
+        <div v-else-if="number === 2">HI</div>
+        <div v-else>NO</div><br> -->
+        <!-- <button @click="increaseNumber">Increase</button> -->
+        <div v-show="show">YES</div>
+        <button @click="toggleShow">Toggle</button>
+       <!-- v-if vs v-show 차이점? 
+            if문 true가 될때까지 렌더링안된다.
+            show 초기조건에 관계없이 항상 렌더링 
+        자주바꿀떄 show / 조건이 바뀌지 않을 경우 if 권장.-->
+    </div>
+    <script>
+        new Vue({ 
+            el: '#app',
+            data:{
+                show: false,
+                number :1,
+                
+            },
+             methods: {
+                toggleShow(){
+                    this.show = !this.show;
+                },
+                increaseNumber(){
+                    this.number++;
+                }
+            },
+        })
+    </script>
+</body>
+</html>
